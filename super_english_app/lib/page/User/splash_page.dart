@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
-import 'package:super_english_app/page/login_page.dart';
+import 'package:super_english_app/page/User/login_page.dart';
 import 'package:super_english_app/utils/colors.dart';
 
 class SplashScreen extends StatelessWidget {
