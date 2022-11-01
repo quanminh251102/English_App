@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:super_english_app/page/login_page.dart';
+import 'package:super_english_app/page/User/login_page.dart';
 
-import '../utils/colors.dart';
-import '../widget/or_divider.dart';
-import '../widget/social_icon.dart';
+import '../../utils/colors.dart';
+import '../../widget/or_divider.dart';
+import '../../widget/social_icon.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:super_english_app/page/signup_page.dart';
+import 'package:super_english_app/page/Homepage/HomePage.dart';
+import 'package:super_english_app/page/User/signup_page.dart';
 import 'package:super_english_app/utils/colors.dart';
 import 'package:super_english_app/widget/or_divider.dart';
 import 'package:super_english_app/widget/social_icon.dart';
@@ -27,6 +28,7 @@ class _LoginPageState extends State<LoginPage> {
         ),
       );
     }
+
     Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
       body: SingleChildScrollView(
@@ -136,7 +138,8 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 onPressed: () {
-                  print('Đăng nhập');
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => HomePage()));
                 },
               ),
             ),
@@ -145,7 +148,9 @@ class _LoginPageState extends State<LoginPage> {
             ),
             Container(
               alignment: Alignment.center,
-              child: OrDivider(text: 'Hoặc đăng nhập với',),
+              child: OrDivider(
+                text: 'Hoặc đăng nhập với',
+              ),
             ),
             SizedBox(
               height: screenSize.height * 0.01,
