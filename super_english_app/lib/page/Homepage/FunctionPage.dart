@@ -46,7 +46,7 @@ class FunctionPage extends StatelessWidget {
                               color: Colors.purple,
                               image: DecorationImage(
                                   image: NetworkImage(
-                                      "https://scontent.fsgn5-12.fna.fbcdn.net/v/t39.30808-6/279717352_524138815754790_1897247183894881927_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=oyplKjs24VAAX-Hh2rS&_nc_ht=scontent.fsgn5-12.fna&oh=00_AfBBcPaZwWf-qqqid4V6ULAl7Ln7eInFomBLAXHzY6cKkw&oe=6361FD2F"))),
+                                      "https://ict-imgs.vgcloud.vn/2020/09/01/19/huong-dan-tao-facebook-avatar.jpg"))),
                         ),
                       ]),
                 ),

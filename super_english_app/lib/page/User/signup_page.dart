@@ -1,9 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:super_english_app/page/Homepage/HomePage.dart';
 import 'package:super_english_app/page/User/login_page.dart';
 
 import '../../utils/colors.dart';
+import '../../widget/login_button.dart';
 import '../../widget/or_divider.dart';
 import '../../widget/social_icon.dart';
 
@@ -17,6 +20,7 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passController = TextEditingController();
+  TextEditingController confirmpassController = TextEditingController();
   bool isObscure = true;
   @override
   Widget build(BuildContext context) {
@@ -69,6 +73,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     child: Padding(
                       padding: EdgeInsets.only(left: screenSize.width * 0.05),
                       child: TextFormField(
+                        controller: emailController,
                         keyboardType: TextInputType.emailAddress,
                         textInputAction: TextInputAction.next,
                         decoration: InputDecoration(
@@ -91,8 +96,9 @@ class _SignUpPageState extends State<SignUpPage> {
                     child: Padding(
                       padding: EdgeInsets.only(left: screenSize.width * 0.05),
                       child: TextFormField(
+                        controller: passController,
                         obscureText: isObscure,
-                        keyboardType: TextInputType.emailAddress,
+                        keyboardType: TextInputType.text,
                         textInputAction: TextInputAction.done,
                         decoration: InputDecoration(
                             hintText: 'Mật khẩu',
@@ -169,24 +175,21 @@ class _SignUpPageState extends State<SignUpPage> {
             Container(
               alignment: Alignment.center,
               height: screenSize.height * 0.06,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  minimumSize:
-                      Size(screenSize.width * 0.7, screenSize.height * 0.06),
-                  primary: MyColor.mainColor,
-                  onPrimary: Colors.white,
-                ),
-                child: FittedBox(
-                  child: Text(
-                    'Đăng ký',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                  ),
-                ),
-                onPressed: () {
-                  print('Đăng ký');
-                },
-              ),
-            ),
+              
+              child: reusable_button(context, "Sign Up", () {
+                  FirebaseAuth.instance
+                      .createUserWithEmailAndPassword(
+                          email: emailController.text,
+                          password: passController.text)
+                      .then((value) {
+                    print("Created New Account");
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HomePage()));
+                  }).onError((error, stackTrace) {
+                    print("Error ${error.toString()}");
+                  });
+                  
+                })),
             SizedBox(
               height: screenSize.height * 0.1,
             ),

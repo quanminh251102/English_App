@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -6,6 +7,8 @@ import 'package:super_english_app/page/User/signup_page.dart';
 import 'package:super_english_app/utils/colors.dart';
 import 'package:super_english_app/widget/or_divider.dart';
 import 'package:super_english_app/widget/social_icon.dart';
+
+import '../../widget/login_button.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -68,6 +71,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: Padding(
                     padding: EdgeInsets.only(left: screenSize.width * 0.05),
                     child: TextFormField(
+                      controller: emailController,
                       keyboardType: TextInputType.emailAddress,
                       textInputAction: TextInputAction.next,
                       decoration: InputDecoration(
@@ -89,6 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: Padding(
                     padding: EdgeInsets.only(left: screenSize.width * 0.05),
                     child: TextFormField(
+                      controller: passController,
                       obscureText: isObscure,
                       keyboardType: TextInputType.emailAddress,
                       textInputAction: TextInputAction.done,
@@ -124,24 +129,18 @@ class _LoginPageState extends State<LoginPage> {
             Container(
               alignment: Alignment.center,
               height: screenSize.height * 0.06,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  minimumSize:
-                      Size(screenSize.width * 0.7, screenSize.height * 0.06),
-                  primary: MyColor.mainColor,
-                  onPrimary: Colors.white,
-                ),
-                child: FittedBox(
-                  child: Text(
-                    'Đăng nhập',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                  ),
-                ),
-                onPressed: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => HomePage()));
-                },
-              ),
+              child: reusable_button(context, "Sign In", () {
+                  FirebaseAuth.instance
+                      .signInWithEmailAndPassword(
+                          email: emailController.text,
+                          password: passController.text)
+                      .then((value) {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HomePage()));
+                  }).onError((error, stackTrace) {
+                    print("Error ${error.toString()}");
+                  });
+                }),
             ),
             SizedBox(
               height: screenSize.height * 0.1,
