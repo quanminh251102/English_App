@@ -119,7 +119,7 @@ class _FlashcardState extends State<Flashcard> {
           ? Container(
               padding: EdgeInsets.only(
                   top: 100.0, bottom: 60.0, right: 70.0, left: 70.0),
-              child: RaisedButton(
+              child: ElevatedButton(
                 child: Column(
                   children: <Widget>[
                     Icon(
@@ -129,11 +129,16 @@ class _FlashcardState extends State<Flashcard> {
                     ),
                     Text(
                       'Kiểm tra từ vựng',
-                      style: TextStyle(fontSize: 18.0),
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        color: Colors.black,
+                      ),
                     ),
                   ],
                 ),
-                color: Colors.white,
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.white,
+                ),
                 onPressed: () {
                   setState(() {
                     startgame = true;
@@ -227,13 +232,15 @@ class _FlashcardState extends State<Flashcard> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           Container(
-            child: RaisedButton(
+            child: ElevatedButton(
               child: Icon(
                 Icons.play_circle_outline,
                 size: 20.0,
                 color: Colors.blue,
               ),
-              color: Colors.white,
+              style: ElevatedButton.styleFrom(
+                primary: Colors.white,
+              ),
               onPressed: () {
                 flutterTts.speak(items[index].name);
                 print('speak');
@@ -302,7 +309,11 @@ class _FlashcardState extends State<Flashcard> {
           ),
           Text(
             items[keyrand].name,
-            style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              fontSize: 18.0,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
           ),
         ],
       );
@@ -444,9 +455,12 @@ class _FlashcardState extends State<Flashcard> {
                                 right: 30,
                               ),
                               width: width - 20,
-                              child: RaisedButton(
+                              // button bottom in game
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  primary: Colors.white,
+                                ),
                                 child: button(),
-                                color: Colors.white,
                                 onPressed: () {
                                   if (countqs == 5.0) {
                                     countqs = 0.0;
@@ -561,13 +575,16 @@ class _FlashcardState extends State<Flashcard> {
                                         MainAxisAlignment.spaceEvenly,
                                     children: <Widget>[
                                       Container(
-                                        child: RaisedButton(
+                                        child: ElevatedButton(
                                           child: Icon(
                                             Icons.play_circle_outline,
                                             size: 60.0,
                                             color: Colors.blue,
                                           ),
-                                          color: Colors.white,
+                                          // in Flapcard
+                                          style: ElevatedButton.styleFrom(
+                                            primary: Colors.white,
+                                          ),
                                           onPressed: () {
                                             speak(items[index].name);
                                             print(items[index].name);

@@ -6,8 +6,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'FunctionPage.dart';
+import 'Speech/SpeechMain.dart';
 import 'Vocabulary/VocaMain.dart';
 // import 'package:english_app/src/resources/Homepage/Speech/SpeechMain.dart';
+import 'Grammar/GrammarMain.dart';
+import 'Listen/ListenMain.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -86,9 +89,9 @@ class _HomePageState extends State<HomePage> {
 
 final pageOpen = [
   VocaMainPage(),
-  // GrammarMainPage(),
-  // SpeechMainPage(),
-  // ListenMainPage(),
+  GrammarMainPage(),
+  SpeechMainPage(),
+  ListenMainPage(),
   // GamerMainPage(),
 ];
 
